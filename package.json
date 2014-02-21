@@ -1,0 +1,18 @@
+{
+  "name": "sort-visialize",
+  "version": "0.0.0",
+  "description": "sort visualize",
+  "main": "index.js",
+  "scripts": {
+    "test": "testem"
+  },
+  "author": "norahiko",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "~1.9.0",
+    "gulp-concat": "~2.1.7",
+    "gulp": "~3.5.2",
+    "mocha": "~1.17.1",
+    "sinon": "~1.8.2"
+  }
+}

@@ -1,0 +1,15 @@
+// vim: set filetype=javascript:
+{
+    "globals": {
+        "describe": false,
+        "it": false,
+        "mocha": false,
+        "chai": false,
+        "sinon": false,
+        "ko": true
+    },
+
+    "browser": true,
+    "node": true
+}
+

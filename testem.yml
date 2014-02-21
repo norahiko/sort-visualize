@@ -1,0 +1,9 @@
+framework: mocha
+
+src_files:
+    - app/vendor/knockout-3.0.0.debug.js
+    - node_modules/sinon/pkg/sinon.js
+    - node_modules/chai/chai.js
+    - src/*.js
+    - test/*.js
+
