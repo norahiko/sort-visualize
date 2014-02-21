@@ -7,6 +7,8 @@
         // library
         "describe": false,
         "it": false,
+        "beforeEach": false,
+        "afterEach": false,
         "mocha": false,
         "chai": false,
         "sinon": false,
