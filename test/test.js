@@ -32,4 +32,49 @@ describe('helper', function() {
             [1, 2, 3, 4, 5]
         );
     });
+
+    it('swap', function() {
+        var ary = [1, 2, 3, 4];
+        helper.swap(ary, 0, 1);
+        deepEqual(ary, [2, 1, 3, 4]);
+
+    });
+
+    it('swap invalid', function() {
+        var ary = [1, 2, 3, 4];
+        assert.throws(function() {
+            helper.swap(ary, 0, 4);
+        });
+    });
+
+    it('insert', function() {
+        var ary = [1, 2, 3, 4];
+        helper.insert(ary, 3, 0);
+        deepEqual(ary, [4, 1, 2, 3]);
+    });
+
+    it('insert invalid', function() {
+        var ary = [1, 2, 3, 4];
+        assert.throws(function() {
+            helper.insert(ary, 0, 4);
+        });
+    });
+});
+
+describe('ViewModel', function() {
+    var testView;
+
+    beforeEach(function() {
+        testView = document.createElement('div');
+        testView.innerHTML = '<div data-bind="foreach: algorithmList"><a data-bind="text: $data"></a></div>' +
+                             '<div data-bind="foreach: sizeList"><a data-bind="text: $data"></a></div>';
+
+    });
+
+    it('init', function() {
+        var vm = new ViewModel();
+        ko.applyBindings(vm, testView);
+
+    });
+    
 });
