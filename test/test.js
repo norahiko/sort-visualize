@@ -20,16 +20,16 @@ describe('helper', function() {
     });
 
     it('shuffle', function() {
-        var ary = [1, 2, 3, 4, 5];
+        var ary = [1, 2, 3, 4, 5, 6, 7];
         helper.shuffle(ary);
         assert.notDeepEqual(
             ary,
-            [1, 2, 3, 4, 5]
+            [1, 2, 3, 4, 5, 6, 7]
         );
 
         assert.deepEqual(
             ary.sort(function(a, b) { return a > b }),
-            [1, 2, 3, 4, 5]
+            [1, 2, 3, 4, 5, 6, 7]
         );
     });
 
@@ -61,6 +61,32 @@ describe('helper', function() {
     });
 });
 
+describe('SortAlgorithm', function() {
+    it('bubble sort', function() {
+        var ary = [5, 4, 3, 2, 1];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('bubble');
+        deepEqual(sort.values, [1, 2, 3, 4, 5]);
+        equal(sort.steps.length, 10);
+    });
+
+    it('bogo sort', function() {
+        var sort = new SortAlgorithm([5, 4, 3, 2, 1]);
+        sort.sort('bogo');
+
+        var values = sort.values.sort(function(a, b) { return a > b });
+        deepEqual(values, [1, 2, 3, 4, 5]);
+    });
+
+    it('bogo sort 1', function() {
+        var sort = new SortAlgorithm([1]);
+        sort.sort('bogo');
+        equal(sort.steps.length, 1);
+        assert(sort.finished);
+    });
+});
+
+
 describe('ViewModel', function() {
     var testView;
 
@@ -76,5 +102,4 @@ describe('ViewModel', function() {
         ko.applyBindings(vm, testView);
 
     });
-    
 });
