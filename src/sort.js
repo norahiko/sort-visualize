@@ -1,4 +1,15 @@
 
+function SortStep(type, indexes) {
+    // type = 'swap' | 'highlight' | 'insert'
+    this.type = type;
+    // アニメーション時にハイライトさせるインデックスの配列
+    this.indexes = indexes;
+}
+
+SortStep.SWAP = 'swap';
+SortStep.HIGHLIGHT = 'highlight';
+SortStep.INSERT = 'insert';
+
 function SortAlgorithm(values) {
     this.values = values;
     this.size = values.length;
@@ -6,40 +17,32 @@ function SortAlgorithm(values) {
     this.finished = false;
 }
 
-SortAlgorithm.SWAP = 'swap';
-SortAlgorithm.HIGHLIGHT = 'highlight';
-SortAlgorithm.INSERT = 'insert';
 
 SortAlgorithm.prototype.sort = function(algorithm) {
     this[algorithm]();
+    // ボゴソートはソートが完了せずに終了する
     if(algorithm !== 'bogo') {
         this.finished = true;
     }
 };
 
+SortAlgorithm.prototype.addStep = function(type, indexes) {
+    this.steps.push(new SortStep(type, indexes));
+};
+
 SortAlgorithm.prototype.swap = function(a, b) {
     helper.swap(this.values, a, b);
-    this.steps.push({
-        type: SortAlgorithm.SWAP,
-        indexes: [a, b],
-    });
+    this.addStep(SortStep.SWAP, [a, b]);
 };
 
 SortAlgorithm.prototype.highlight = function(indexes) {
-    this.steps.push({
-        type: SortAlgorithm.HIGHLIGHT,
-        indexes: indexes,
-    });
+    this.addStep(SortStep.HIGHLIGHT, indexes);
 };
 
 SortAlgorithm.prototype.insert = function(from, to) {
     helper.insert(this.values, from, to);
-    this.steps.push({
-        type: SortAlgorithm.INSERT,
-        indexes: [to],
-    });
+    this.addStep(SortStep.INSERT, [to]);
 };
-
 
 SortAlgorithm.prototype.bubble = function bubbleSort() {
     for(var i = this.size - 1; 0 < i; i--) {

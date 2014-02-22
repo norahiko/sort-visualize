@@ -5,6 +5,7 @@
         "helper": true,
         "view": true,
         "SortAlgorithm": true,
+        "SortStep": true,
         "ViewModel": true,
 
         // library

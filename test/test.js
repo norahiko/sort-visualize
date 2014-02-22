@@ -57,7 +57,7 @@ describe('helper', function() {
 
 describe('SortAlgorithm', function() {
     function isHighlight(step) {
-        return step.type === SortAlgorithm.HIGHLIGHT;
+        return step.type === SortStep.HIGHLIGHT;
     }
 
     it('bubble sort', function() {
