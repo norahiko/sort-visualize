@@ -3,7 +3,7 @@ function SortAlgorithm(values) {
     this.values = values;
     this.size = values.length;
     this.steps = [];
-    this.finished = false; 
+    this.finished = false;
 }
 
 SortAlgorithm.SWAP = 'swap';
@@ -25,19 +25,11 @@ SortAlgorithm.prototype.swap = function(a, b) {
     });
 };
 
-SortAlgorithm.prototype.highlight = function(a, b) {
+SortAlgorithm.prototype.highlight = function(indexes) {
     this.steps.push({
         type: SortAlgorithm.HIGHLIGHT,
-        indexes: [a, b],
+        indexes: indexes,
     });
-};
-
-SortAlgorithm.prototype.compare = function(a, b) {
-    if(this.values[b] < this.values[a]) {
-        this.swap(a, b);
-    } else {
-        this.highlight(a, b);
-    }
 };
 
 SortAlgorithm.prototype.insert = function(from, to) {
@@ -52,7 +44,11 @@ SortAlgorithm.prototype.insert = function(from, to) {
 SortAlgorithm.prototype.bubble = function bubbleSort() {
     for(var i = this.size - 1; 0 < i; i--) {
         for(var k = 0; k < i; k++) {
-            this.compare(k, k + 1);
+            if(this.values[k + 1] < this.values[k]) {
+                this.swap(k, k + 1);
+            } else {
+                this.highlight([k, k + 1]);
+            }
         }
     }
 };
@@ -63,8 +59,9 @@ SortAlgorithm.prototype.bogo = function bogoSort() {
         this.swap(i, rnd);
     }
 
+    // valuesが整列済みになっているか調べる
     for(i = 0; i < this.size - 1; i++) {
-        this.compare(i, i + 1);
+        this.highlight([i, i + 1]);
         if(this.values[i + 1] < this.values[i]) {
             return;
         }

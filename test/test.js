@@ -5,13 +5,6 @@ var equal = assert.strictEqual;
 var deepEqual = assert.deepEqual;
 
 
-describe('first test', function() {
-    it('it', function() {
-        assert(true);
-    });
-});
-
-
 describe('helper', function() {
     it('range', function() {
         deepEqual(helper.range(0, 3), [0, 1, 2]);
@@ -61,13 +54,26 @@ describe('helper', function() {
     });
 });
 
+
 describe('SortAlgorithm', function() {
+    function isHighlight(step) {
+        return step.type === SortAlgorithm.HIGHLIGHT;
+    }
+
     it('bubble sort', function() {
         var ary = [5, 4, 3, 2, 1];
         var sort = new SortAlgorithm(ary);
         sort.sort('bubble');
         deepEqual(sort.values, [1, 2, 3, 4, 5]);
         equal(sort.steps.length, 10);
+    });
+
+    it('sorted bubble sort', function() {
+        var ary = [1, 2, 3];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('bubble');
+        equal(sort.steps.length, 3);
+        assert(sort.steps.every(isHighlight), 'steps are all Highlight');
     });
 
     it('bogo sort', function() {
@@ -82,7 +88,7 @@ describe('SortAlgorithm', function() {
         var sort = new SortAlgorithm([1]);
         sort.sort('bogo');
         equal(sort.steps.length, 1);
-        assert(sort.finished);
+        assert(sort.finished, 'bogosort is finished');
     });
 });
 
