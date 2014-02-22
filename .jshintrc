@@ -3,6 +3,9 @@
     "globals": {
         // app
         "helper": true,
+        "view": true,
+        "SortAlgorithm": true,
+        "ViewModel": true,
 
         // library
         "describe": false,
