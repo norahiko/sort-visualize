@@ -123,7 +123,7 @@ describe('ViewModel', function() {
         vm.changed();
 
         setTimeout(function() {
-            assert(drawStub.calledOnce);
+            assert(drawStub.calledWith(indexes));
             done();
         }, 50);
     });
