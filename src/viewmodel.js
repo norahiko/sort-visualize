@@ -51,6 +51,6 @@ ViewModel.prototype.restart = function() {
 };
 
 ViewModel.prototype.getIntervalTime = function() {
-    return 3000 / this.speed.peek();
+    return 3000 / parseInt(this.speed.peek(), 10);
 };
 
