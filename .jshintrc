@@ -3,7 +3,7 @@
     "globals": {
         // app
         "helper": true,
-        "view": true,
+        "graph": true,
         "SortAlgorithm": true,
         "SortStep": true,
         "ViewModel": true,

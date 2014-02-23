@@ -1,9 +1,48 @@
-body
-    margin: 0px
-    padding: 10px
 
-.sort-visualize
+.ui
+    & > div
+        height: 30px
+        float: left
+
+    &:after
+        clear: both
+
     input[type=radio]
         display: none
+
+    .button-set
+        font-size: 0px
+        margin: 0px 5px
+
+    .button
+        display: inline-block
+        background: #ddd
+        padding: 5px 10px
+        border-right: 1px solid #bbb
+        font-size: 12px
+
+        &:hover
+            background: #ccc
+
+    label:first-child .button
+        border-radius: 5px 0px 0px 5px
+
+    label:last-child .button
+        border-radius: 0px 5px 5px 0px
+        border-right-width: 0px
+
+    label:only-child .button
+        border-radius: 5px
+
+    input:checked + .button
+        background: #666
+        color: white
+
+
+
+
+
+
+
 
 

@@ -95,17 +95,36 @@ describe('SortAlgorithm', function() {
 
 describe('ViewModel', function() {
     var testView;
+    var sortStub;
+    var drawStub;
 
     beforeEach(function() {
         testView = document.createElement('div');
-        testView.innerHTML = '<div data-bind="foreach: algorithmList"><a data-bind="text: $data"></a></div>' +
-                             '<div data-bind="foreach: sizeList"><a data-bind="text: $data"></a></div>';
-
+        sortStub = sinon.stub(window, 'SortAlgorithm');
+        drawStub = sinon.stub(graph, 'draw');
     });
 
-    it('init', function() {
+    afterEach(function() {
+        sortStub.restore();
+        drawStub.restore();
+    });
+
+    it('called graph.draw', function(done) {
+        var indexes = [0, 1];
+        sortStub.returns({
+            steps: [new SortStep('swap', indexes)],
+            finished: true,
+            sort: function() {}
+        });
+
         var vm = new ViewModel();
         ko.applyBindings(vm, testView);
+        vm.speed(500);
+        vm.changed();
 
+        setTimeout(function() {
+            assert(drawStub.calledOnce);
+            done();
+        }, 50);
     });
 });

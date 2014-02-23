@@ -6,6 +6,14 @@ function SortStep(type, indexes) {
     this.indexes = indexes;
 }
 
+SortStep.prototype.run = function(ary) {
+    if(this.type === SortStep.SWAP) {
+        helper.swap(ary, this.indexes[0], this.indexes[1]);
+    } else if(this.type === SortStep.INSERT) {
+        helper.insert(ary, this.indexes[0], this.indexes[1]);
+    }
+};
+
 SortStep.SWAP = 'swap';
 SortStep.HIGHLIGHT = 'highlight';
 SortStep.INSERT = 'insert';
@@ -20,6 +28,7 @@ function SortAlgorithm(values) {
 
 SortAlgorithm.prototype.sort = function(algorithm) {
     this[algorithm]();
+    this.steps.reverse();
     // ボゴソートはソートが完了せずに終了する
     if(algorithm !== 'bogo') {
         this.finished = true;
