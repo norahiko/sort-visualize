@@ -6,9 +6,9 @@ var graph = {};
     var width;
     var height;
 
-    var bgColor = '#eee';
-    var barColor = '#999';
-    var highlightColor = '#69f';
+    var bgColor = '#333';
+    var barColor = '#6cf';
+    var highlightColor = '#cf6';
 
     graph.init = function(c) {
         canvas = c;
