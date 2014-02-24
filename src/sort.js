@@ -11,6 +11,7 @@ SortStep.prototype.run = function(ary) {
         helper.swap(ary, this.indexes[0], this.indexes[1]);
     } else if(this.type === SortStep.INSERT) {
         helper.insert(ary, this.indexes[0], this.indexes[1]);
+        this.indexes[0] = -1;
     }
 };
 
@@ -50,7 +51,7 @@ SortAlgorithm.prototype.highlight = function(a, b) {
 
 SortAlgorithm.prototype.insert = function(from, to) {
     helper.insert(this.values, from, to);
-    this.addStep(SortStep.INSERT, [to, -1]);
+    this.addStep(SortStep.INSERT, [from, to]);
 };
 
 SortAlgorithm.prototype.bubble = function bubbleSort() {
@@ -141,6 +142,31 @@ SortAlgorithm.prototype.shell = function shellSort() {
         }
     }
 };
+
+SortAlgorithm.prototype.merge = function mergeSort() {
+    this.mergeSortImpl(0, this.size - 1);
+};
+
+SortAlgorithm.prototype.mergeSortImpl = function(left, right) {
+    if(right <= left) {
+        return;
+    }
+    var middle = (left + right) / 2 | 0;
+    this.mergeSortImpl(left, middle);
+    this.mergeSortImpl(middle + 1, right);
+
+    var l = left;
+    var m = middle + 1;
+    while(l < m && m <= right) {
+        this.highlight(l, m);
+        if(this.values[l] >= this.values[m]) {
+            this.insert(m, l);
+            m++;
+        }
+        l++;
+    }
+};
+
 
 SortAlgorithm.prototype.bogo = function bogoSort() {
     for(var i = 0; i < this.size; i++) {
