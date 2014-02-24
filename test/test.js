@@ -90,6 +90,14 @@ describe('SortAlgorithm', function() {
         equal(sort.steps.length, 1);
         assert(sort.finished, 'bogosort is finished');
     });
+
+    it('select sort', function() {
+        var ary = [3, 2, 4, 1, 5, 6];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('select');
+        equal(sort.steps.length, (ary.length * (ary.length - 1)) / 2 + ary.length - 1);
+        deepEqual(sort.values, [1, 2, 3, 4, 5, 6]);
+    });
 });
 
 

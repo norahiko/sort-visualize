@@ -65,6 +65,19 @@ SortAlgorithm.prototype.bubble = function bubbleSort() {
     }
 };
 
+SortAlgorithm.prototype.select = function selectSort() {
+    for(var i = 0; i < this.size - 1; i++) {
+        var min = i;
+        for(var k = i + 1; k < this.size; k++) {
+            this.highlight([min, k]);
+            if(this.values[k] < this.values[min]) {
+                min = k;
+            }
+        }
+        this.swap(i, min);
+    }
+};
+
 SortAlgorithm.prototype.bogo = function bogoSort() {
     for(var i = 0; i < this.size; i++) {
         var rnd = (Math.random() * (this.size - i) | 0) + i;
