@@ -202,6 +202,54 @@ SortAlgorithm.prototype.quickSortImpl = function(left, right) {
     }
 };
 
+SortAlgorithm.prototype.heap = function heapSort() {
+    for(var i = 0; i < this.size; i++) {
+        this.swapUp(i);
+    }
+
+    for(i = this.size - 1; 0 < i; i--) {
+        if(this.values[0] > this.values[i]) {
+            this.swap(0, i);
+        } else {
+            this.highlight(0, i);
+        }
+        this.swapDown(0, i);
+    }
+};
+
+SortAlgorithm.prototype.swapUp = function(cur) {
+    var parent;
+    while(cur !== 0) {
+        parent = (cur - 1) / 2 | 0;
+        if(this.values[parent] >= this.values[cur]) {
+            this.highlight(parent, cur);
+            break;
+        }
+        this.swap(parent, cur);
+        cur = parent;
+    }
+};
+
+SortAlgorithm.prototype.swapDown = function(cur, length) {
+    var values = this.values;
+    var child;
+    while(true) {
+        child = cur * 2 + 1;
+        if(values[child] < values[child + 1]) {
+            child += 1;
+        }
+        if(values[cur] >= values[child]) {
+            this.highlight(cur, child);
+            break;
+        }
+        if(length <= child) {
+            break;
+        }
+        this.swap(cur, child);
+        cur = child;
+    }
+};
+
 SortAlgorithm.prototype.bogo = function bogoSort() {
     for(var i = 0; i < this.size; i++) {
         var rnd = (Math.random() * (this.size - i) | 0) + i;

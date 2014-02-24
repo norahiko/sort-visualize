@@ -147,6 +147,14 @@ describe('SortAlgorithm', function() {
         deepEqual(sort.values, [1, 2, 3, 4, 5, 6, 7]);
         equal(sort.steps.length, 7);
     });
+
+    it('heap sort', function() {
+        var ary = [7, 6, 5, 4, 3, 2, 1];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('heap');
+        deepEqual(sort.values, [1, 2, 3, 4, 5, 6, 7]);
+        equal(sort.steps.length, 17);
+    });
 });
 
 
