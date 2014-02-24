@@ -1,16 +1,18 @@
 
 function ViewModel() {
-    this.algorithm = ko.observable('bubble');
+    this.algorithm = ko.observable('Bubble');
     this.size = ko.observable(50);
-    this.speed = ko.observable(50);
+    this.speed = ko.observable(9);
 
     this.sort = null;
     this.nums = [];
-    this.algorithmList = ['bubble', 'insertion', 'quick', 'bogo'];
+    this.algorithmList = ['Bubble', 'Insertion', 'Quick', 'Bogo'];
     this.sizeList = [5, 10, 50, 100, 200];
-    this.speedMin = 1;      // 3 seconds
-    this.speedMax = 750;    // 4 milliseconds
+    this.speedMin = 1;      // 2 seconds
+    this.speedMax = 22;     // 4 milliseconds
     this.intervalId = -1;
+
+    graph.init(helper.getCanvas('graph-canvas'));
 
     this.changed = ko.computed({
         read: function() {
@@ -28,21 +30,22 @@ ViewModel.prototype.start = function(algorithm, size) {
     this.sort = new SortAlgorithm(this.nums.slice());
 
     clearInterval(this.intervalId);
-    this.intervalId = setTimeout(animationFrame, this.getIntervalTime());
+    this.intervalId = setTimeout(animationFrame, 0);
 
     function animationFrame() {
         if(vm.sort.steps.length === 0) {
             if(vm.sort.finished) {
+                graph.draw([-1, -1], vm.nums);
                 return;
             } else {
-                vm.sort.sort(algorithm);
+                vm.sort.sort(algorithm.toLowerCase());
             }
         }
 
         var step = vm.sort.steps.pop();
         step.run(vm.nums);
         graph.draw(step.indexes, vm.nums);
-        //setTimeout(animationFrame, vm.getIntervalTime());
+        vm.intervalId = setTimeout(animationFrame, vm.getIntervalTime());
     }
 };
 
@@ -51,6 +54,7 @@ ViewModel.prototype.restart = function() {
 };
 
 ViewModel.prototype.getIntervalTime = function() {
-    return 3000 / parseInt(this.speed.peek(), 10);
+    var speed = parseInt(this.speed.peek(), 10);
+    return 2000 / speed / speed | 0;
 };
 

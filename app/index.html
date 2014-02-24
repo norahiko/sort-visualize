@@ -9,7 +9,6 @@
 <body>
 
     <div class="ui">
-
         <div data-bind="foreach: algorithmList" class="button-set">
             <label>
                 <input type="radio" data-bind="checkedValue: $data, checked: $root.algorithm">
@@ -35,8 +34,12 @@
                 <span data-bind="click: restart" class="button">Restart</span>
             </label>
         </div>
-
     </div>
+
+    <div class="graph">
+        <canvas id="graph-canvas" width="420" height="350"></canvas>
+    </div>
+
 
 
     <script src="vendor/knockout-3.0.0.debug.js" type="text/javascript" charset="utf-8"></script>

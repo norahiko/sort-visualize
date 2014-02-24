@@ -1,11 +1,9 @@
 
 .ui
     & > div
+        display: inline-block
         height: 30px
-        float: left
 
-    &:after
-        clear: both
 
     input[type=radio]
         display: none
@@ -38,10 +36,12 @@
         background: #666
         color: white
 
+    input[type=range]
+        position: relative
+        top: 7px
 
-
-
-
+.graph
+    canvas
 
 
 

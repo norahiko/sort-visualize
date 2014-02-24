@@ -35,4 +35,11 @@ var helper = {
         }
     },
 
+    getCanvas: function(id) {
+        var canvas = document.getElementById(id);
+        if(canvas === null || canvas.nodeName.toLowerCase() !== 'canvas') {
+            return document.createElement('canvas');
+        }
+        return canvas;
+    }
 };

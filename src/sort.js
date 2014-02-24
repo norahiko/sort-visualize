@@ -50,7 +50,7 @@ SortAlgorithm.prototype.highlight = function(indexes) {
 
 SortAlgorithm.prototype.insert = function(from, to) {
     helper.insert(this.values, from, to);
-    this.addStep(SortStep.INSERT, [to]);
+    this.addStep(SortStep.INSERT, [to, -1]);
 };
 
 SortAlgorithm.prototype.bubble = function bubbleSort() {
