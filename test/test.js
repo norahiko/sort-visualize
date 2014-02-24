@@ -99,6 +99,14 @@ describe('SortAlgorithm', function() {
         deepEqual(sort.values, [1, 2, 3, 4, 5, 6]);
     });
 
+    it('shaker sort', function() {
+        var ary = [3, 4, 7, 1, 2, 6, 8, 5];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('shaker');
+        deepEqual(sort.values, [1, 2, 3, 4, 5, 6, 7, 8]);
+        //equal(sort.steps.length, 10);
+    });
+
     it('insertion sort', function() {
         var ary = [5, 4, 3, 2, 1];
         var sort = new SortAlgorithm(ary);

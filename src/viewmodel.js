@@ -6,7 +6,7 @@ function ViewModel() {
 
     this.sort = null;
     this.nums = [];
-    this.algorithmList = ['Bubble', 'Selection', 'Insertion', 'Shell', 'Quick', 'Bogo'];
+    this.algorithmList = ['Bubble', 'Selection', 'Shaker', 'Insertion', 'Shell', 'Quick', 'Bogo'];
     this.sizeList = [5, 10, 50, 100, 200];
     this.speedMin = 1;      // 2 seconds
     this.speedMax = 22;     // 4 milliseconds

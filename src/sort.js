@@ -78,6 +78,36 @@ SortAlgorithm.prototype.selection = function selectionSort() {
     }
 };
 
+SortAlgorithm.prototype.shaker = function shakerSort() {
+    var left = 0;
+    var right = this.size - 1;
+    var incr = 1;
+    var i = 0;
+    var next;
+    var lastSwapped = 0;
+
+    var count = 0;
+    while(left < right) {
+        next = i + incr;
+        if((incr === 1 && this.values[i] > this.values[next]) || (incr === -1 && this.values[next] > this.values[i])) {
+            this.swap(i, next);
+            lastSwapped = i;
+        } else {
+            this.highlight([i, next]);
+        }
+
+        if(next === right) {
+            i = right = lastSwapped;
+            incr = -incr;
+        } else if(next === left) {
+            i = left = lastSwapped;
+            incr = -incr;
+        } else {
+            i = next;
+        }
+    }
+};
+
 SortAlgorithm.prototype.insertion = function insertionSort() {
     for(var i = 1; i < this.size; i++) {
         for(var k = i; 0 < k; k--) {
