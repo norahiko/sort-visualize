@@ -59,3 +59,4 @@ var helper = {
         return canvas;
     }
 };
+

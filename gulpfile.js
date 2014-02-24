@@ -4,7 +4,13 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var stylus = require('gulp-stylus');
 
-var srcFiles = 'src/**/*.js';
+var srcFiles = [
+    'src/helper.js',
+    'src/graph.js',
+    'src/sort.js',
+    'src/viewmodel.js',
+    'src/main.js',
+];
 var destSrc = 'app.js';
 var destDir = 'app/js';
 

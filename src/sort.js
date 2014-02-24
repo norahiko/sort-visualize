@@ -1,10 +1,13 @@
-
 function SortStep(type, indexes) {
     // type = 'swap' | 'highlight' | 'insert'
     this.type = type;
     // アニメーション時にハイライトさせるインデックスの配列
     this.indexes = indexes;
 }
+
+SortStep.SWAP = 'swap';
+SortStep.HIGHLIGHT = 'highlight';
+SortStep.INSERT = 'insert';
 
 SortStep.prototype.run = function(ary) {
     if(this.type === SortStep.SWAP) {
@@ -15,9 +18,6 @@ SortStep.prototype.run = function(ary) {
     }
 };
 
-SortStep.SWAP = 'swap';
-SortStep.HIGHLIGHT = 'highlight';
-SortStep.INSERT = 'insert';
 
 function SortAlgorithm(values) {
     this.values = values;

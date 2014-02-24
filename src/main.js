@@ -7,3 +7,4 @@ function main() {
     ko.applyBindings(vm);
     vm.changed();
 }
+
