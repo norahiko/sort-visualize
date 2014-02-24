@@ -107,6 +107,13 @@ describe('SortAlgorithm', function() {
         equal(sort.steps.length, 10);
     });
 
+    it('shell sort', function() {
+        var ary = [7, 6, 5, 4, 3, 2, 1];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('shell');
+        deepEqual(sort.values, [1, 2, 3, 4, 5, 6, 7]);
+        equal(sort.steps.length, 15);
+    });
 });
 
 

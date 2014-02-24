@@ -85,6 +85,28 @@ SortAlgorithm.prototype.insertion = function insertionSort() {
                 this.swap(k - 1, k);
             } else {
                 this.highlight([k - 1, k]);
+                break;
+            }
+        }
+    }
+};
+
+SortAlgorithm.prototype.shell = function shellSort() {
+    var gap = 1;
+    while(gap < this.size) {
+        gap = gap * 3 + 1;
+    }
+
+    while(1 < gap) {
+        gap = gap / 3 | 0;
+        for(var i = gap; i < this.size; i++) {
+            for(var k = i; 0 < k; k -= gap) {
+                if(this.values[k - gap] > this.values[k]) {
+                    this.swap(k - gap, k);
+                } else {
+                    this.highlight([k - gap, k]);
+                    break;
+                }
             }
         }
     }
