@@ -44,8 +44,8 @@ SortAlgorithm.prototype.swap = function(a, b) {
     this.addStep(SortStep.SWAP, [a, b]);
 };
 
-SortAlgorithm.prototype.highlight = function(indexes) {
-    this.addStep(SortStep.HIGHLIGHT, indexes);
+SortAlgorithm.prototype.highlight = function(a, b) {
+    this.addStep(SortStep.HIGHLIGHT, [a, b]);
 };
 
 SortAlgorithm.prototype.insert = function(from, to) {
@@ -59,7 +59,7 @@ SortAlgorithm.prototype.bubble = function bubbleSort() {
             if(this.values[k] > this.values[k + 1]) {
                 this.swap(k, k + 1);
             } else {
-                this.highlight([k, k + 1]);
+                this.highlight(k, k + 1);
             }
         }
     }
@@ -69,7 +69,7 @@ SortAlgorithm.prototype.selection = function selectionSort() {
     for(var i = 0; i < this.size - 1; i++) {
         var min = i;
         for(var k = i + 1; k < this.size; k++) {
-            this.highlight([min, k]);
+            this.highlight(min, k);
             if(this.values[k] < this.values[min]) {
                 min = k;
             }
@@ -93,7 +93,7 @@ SortAlgorithm.prototype.shaker = function shakerSort() {
             this.swap(i, next);
             lastSwapped = i;
         } else {
-            this.highlight([i, next]);
+            this.highlight(i, next);
         }
 
         if(next === right) {
@@ -114,7 +114,7 @@ SortAlgorithm.prototype.insertion = function insertionSort() {
             if(this.values[k - 1] > this.values[k]) {
                 this.swap(k - 1, k);
             } else {
-                this.highlight([k - 1, k]);
+                this.highlight(k - 1, k);
                 break;
             }
         }
@@ -134,7 +134,7 @@ SortAlgorithm.prototype.shell = function shellSort() {
                 if(this.values[k - gap] > this.values[k]) {
                     this.swap(k - gap, k);
                 } else {
-                    this.highlight([k - gap, k]);
+                    this.highlight(k - gap, k);
                     break;
                 }
             }
@@ -150,7 +150,7 @@ SortAlgorithm.prototype.bogo = function bogoSort() {
 
     // valuesが整列済みになっているか調べる
     for(i = 0; i < this.size - 1; i++) {
-        this.highlight([i, i + 1]);
+        this.highlight(i, i + 1);
         if(this.values[i] > this.values[i + 1]) {
             return;
         }
