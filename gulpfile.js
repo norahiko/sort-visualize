@@ -28,8 +28,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('stylus', function() {
-    return gulp.src(stylusFiles)
-               .pipe(stylus())
-               .pipe(gulp.dest(stylusDestDir));
+    gulp.src(stylusFiles)
+         .pipe(stylus())
+         .on('error', function(err) { console.error(err.message) })
+         .pipe(gulp.dest(stylusDestDir));
 });
 
