@@ -56,7 +56,7 @@ SortAlgorithm.prototype.insert = function(from, to) {
 SortAlgorithm.prototype.bubble = function bubbleSort() {
     for(var i = this.size - 1; 0 < i; i--) {
         for(var k = 0; k < i; k++) {
-            if(this.values[k + 1] < this.values[k]) {
+            if(this.values[k] > this.values[k + 1]) {
                 this.swap(k, k + 1);
             } else {
                 this.highlight([k, k + 1]);
@@ -99,7 +99,7 @@ SortAlgorithm.prototype.bogo = function bogoSort() {
     // valuesが整列済みになっているか調べる
     for(i = 0; i < this.size - 1; i++) {
         this.highlight([i, i + 1]);
-        if(this.values[i + 1] < this.values[i]) {
+        if(this.values[i] > this.values[i + 1]) {
             return;
         }
     }
