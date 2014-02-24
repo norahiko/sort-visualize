@@ -52,6 +52,15 @@ describe('helper', function() {
             helper.insert(ary, 0, 4);
         });
     });
+
+    it('median3', function() {
+        equal(helper.median3(1, 2, 3), 2);
+        equal(helper.median3(1, 3, 2), 2);
+        equal(helper.median3(2, 1, 3), 2);
+        equal(helper.median3(2, 3, 1), 2);
+        equal(helper.median3(3, 1, 2), 2);
+        equal(helper.median3(3, 2, 1), 2);
+    });
 });
 
 
@@ -129,6 +138,14 @@ describe('SortAlgorithm', function() {
         sort.sort('merge');
         deepEqual(sort.values, [1, 2, 3, 4, 5, 6, 7]);
         equal(sort.steps.length, 18);
+    });
+
+    it('quick sort', function() {
+        var ary = [7, 6, 5, 4, 3, 2, 1];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('quick');
+        deepEqual(sort.values, [1, 2, 3, 4, 5, 6, 7]);
+        equal(sort.steps.length, 7);
     });
 });
 

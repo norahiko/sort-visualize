@@ -39,6 +39,7 @@ ViewModel.prototype.start = function(algorithm, size) {
                 return;
             } else {
                 vm.sort.sort(algorithm.toLowerCase());
+                console.log(vm.sort.steps.length);
             }
         }
 

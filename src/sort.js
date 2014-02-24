@@ -167,6 +167,40 @@ SortAlgorithm.prototype.mergeSortImpl = function(left, right) {
     }
 };
 
+SortAlgorithm.prototype.quick = function quickSort() {
+    this.quickSortImpl(0, this.size - 1);
+};
+
+SortAlgorithm.prototype.quickSortImpl = function(left, right) {
+    var values = this.values;
+    var middle = (left + right) / 2 | 0;
+    var pivot = helper.median3(values[left], values[middle], values[right]);
+    var l = left;
+    var r = right;
+    while(true) {
+        while(values[l] < pivot) {
+            this.highlight(l, r);
+            l++;
+        }
+        while(pivot < values[r]) {
+            this.highlight(l, r);
+            r--;
+        }
+        if(r <= l) {
+            break;
+        }
+        this.swap(l, r);
+        l++;
+        r--;
+    }
+
+    if(left < l - 1) {
+        this.quickSortImpl(left, l - 1);
+    }
+    if(r + 1 < right) {
+        this.quickSortImpl(r + 1, right);
+    }
+};
 
 SortAlgorithm.prototype.bogo = function bogoSort() {
     for(var i = 0; i < this.size; i++) {

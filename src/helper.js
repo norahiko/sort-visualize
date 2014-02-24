@@ -35,6 +35,22 @@ var helper = {
         }
     },
 
+    median3: function(a, b, c) {
+        if(b <= a)
+            if (a <= c)
+                return a;
+            else if(c <= b)
+                return b;
+            else
+                return c;
+        else if(c <= a)
+            return a;
+        else if(c <= b)
+            return c;
+        else
+            return b;
+    },
+
     getCanvas: function(id) {
         var canvas = document.getElementById(id);
         if(canvas === null || canvas.nodeName.toLowerCase() !== 'canvas') {
