@@ -65,7 +65,7 @@ SortAlgorithm.prototype.bubble = function bubbleSort() {
     }
 };
 
-SortAlgorithm.prototype.select = function selectSort() {
+SortAlgorithm.prototype.selection = function selectionSort() {
     for(var i = 0; i < this.size - 1; i++) {
         var min = i;
         for(var k = i + 1; k < this.size; k++) {
