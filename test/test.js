@@ -98,6 +98,15 @@ describe('SortAlgorithm', function() {
         equal(sort.steps.length, (ary.length * (ary.length - 1)) / 2 + ary.length - 1);
         deepEqual(sort.values, [1, 2, 3, 4, 5, 6]);
     });
+
+    it('insertion sort', function() {
+        var ary = [5, 4, 3, 2, 1];
+        var sort = new SortAlgorithm(ary);
+        sort.sort('insertion');
+        deepEqual(sort.values, [1, 2, 3, 4, 5]);
+        equal(sort.steps.length, 10);
+    });
+
 });
 
 

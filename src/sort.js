@@ -78,6 +78,18 @@ SortAlgorithm.prototype.select = function selectSort() {
     }
 };
 
+SortAlgorithm.prototype.insertion = function insertionSort() {
+    for(var i = 1; i < this.size; i++) {
+        for(var k = i; 0 < k; k--) {
+            if(this.values[k - 1] > this.values[k]) {
+                this.swap(k - 1, k);
+            } else {
+                this.highlight([k - 1, k]);
+            }
+        }
+    }
+};
+
 SortAlgorithm.prototype.bogo = function bogoSort() {
     for(var i = 0; i < this.size; i++) {
         var rnd = (Math.random() * (this.size - i) | 0) + i;
