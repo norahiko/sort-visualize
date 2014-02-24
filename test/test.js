@@ -65,7 +65,7 @@ describe('SortAlgorithm', function() {
         var sort = new SortAlgorithm(ary);
         sort.sort('bubble');
         deepEqual(sort.values, [1, 2, 3, 4, 5]);
-        equal(sort.steps.length, 10);
+        equal(sort.steps.length, ary.length * (ary.length - 1) / 2);
     });
 
     it('sorted bubble sort', function() {
@@ -133,6 +133,6 @@ describe('ViewModel', function() {
         setTimeout(function() {
             assert(drawStub.calledWith(indexes));
             done();
-        }, 50);
+        }, 20);
     });
 });
