@@ -18,7 +18,7 @@ var stylusFiles = 'app/css/*.styl';
 var stylusDestDir = 'app/css';
 
 
-gulp.task('default', ['build', 'stylus']);
+gulp.task('default', ['build']);
 
 gulp.task('watch', function() {
     gulp.watch(srcFiles, ['js']);
